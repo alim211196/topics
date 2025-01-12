@@ -1,0 +1,220 @@
+//to show all list of dbs
+1.show dbs 
+
+//to create db and switched on it
+2.use school 
+
+//to create collection in school db
+3.db.createCollection("students") 
+
+//to drop database
+4.db.dropDatabase() 
+
+//to insert one document in collection
+5. db.students.insertOne({name:'Alim',age:29,exp:4.1})
+
+//to find all documents
+6.db.students.find()
+
+//to insert Many documents in collection
+7. db.students.insertMany([{name:'Jameel',age:27,exp:3.5},
+{name:'Uzma',age:28,exp:4.5},{name:'Afrin',age:30,exp:8.0}])
+
+//data types
+8. db.students.insertOne(
+    {
+        name:"Sohail", //string
+        age:27,             //integer
+        exp:4.5,                 //double
+        fullTime:true,               //boolean
+        joiningDate:new Date("2020-06-01T00:00:00"),           //date
+        resignDate:null,           //null
+        skills:["NodeJS","AWS","NestJS"],        //array
+        address:{                                
+            area:"kondhwa",
+            city:"Pune",
+            state:"MHT",
+            country:"india"
+            }                              //object or nested document
+            }
+            )
+
+//sorting document in increasing order
+9. db.students.find().sort({exp:1}) 
+
+//sorting document in decreasing order
+10. db.students.find().sort({exp:-1}) 
+
+//get limited documents
+11. db.students.find().limit(1)
+
+//get limited documents with sort
+12. db.students.find().sort({exp:1}).limit(1)
+
+//query and projection in find document
+//using query it will filter data as per given fields values
+13. db.students.find({name:"Alim",exp:4.1})
+
+//using projection it will only show specific fields which we want to show
+14. db.students.find({name:"Alim"},{name:true})
+
+//update documents updateOne(filter,update)
+15. db.students.updateOne({name:"Alim"},{$set:{fullTime:true}})
+
+//safe thing to update data using id
+16. db.students.updateOne({_id: ObjectId('677104f5d43f6e56694eeb86')},{$set:{fullTime:true}})
+
+//using updateMany we can update multiple documents
+ //this command make a true and also added field fullTime if not exists
+17. db.students.updateMany({},{$set:{fullTime:true}})
+
+//by using unset method we can remove field from document
+18. db.students.updateOne({_id: ObjectId('67710674d43f6e56694eeb8a')},{$unset:{fullTime:false}})
+
+//field exist then update document
+19. db.students.updateMany({fullTime:{$exists:false}},{$set:{fullTime:true}})
+
+//delete document from collection using deleteOne()
+20. db.students.deleteOne({_id: ObjectId('67710870d43f6e56694eeb8b')})
+
+//delete document from collection using deleteMany()
+21. db.students.deleteMany({fullTime:false})
+
+//comparison operators
+//find not equals document
+23. db.students.find({name:{$ne:"Alim"}})
+
+// find less then document
+24. db.students.find({age:{$lt:28}})
+
+// find less then equal to document
+25. db.students.find({age:{$lte:28}})
+
+//find greater then equal to document
+26.  db.students.find({age:{$gte:28}})
+
+//find range document
+27. db.students.find({age:{$gte:27,$lte:29}})
+
+//to get specific documents with in
+28. db.students.find({name:{$in:["Alim","Uzma"]}})
+
+//to get specific documents with nin
+29. db.students.find({name:{$nin:["Alim"]}})
+
+//using and logical operator get result
+30. db.students.find({$and:[{fullTime:true},{age:{$lte:28}}]})
+
+//using or logical operator get result
+31. db.students.find({$or:[{fullTime:true},{age:{$lte:28}}]})
+
+//using nor logical operator get result
+32. db.students.find({$nor:[{fullTime:false},{age:{$lte:25}}]})
+
+//using not logical operator get result
+33. db.students.find({age:{$not:{$gte:28}}})
+
+// create/set Indexes
+34. db.students.createIndex({name:1})
+
+//get Indexes
+35. db.students.getIndexes()
+
+//drop Indexes
+36. db.students.dropIndex('name_1')
+
+//collections
+
+//show collections
+37. show collections
+
+//create collection with require size
+38. db.createCollection("teachers",{capped:true,size:10000000,max:100},{autoIndexId:false})
+
+// to get nested document values
+39. db.teachers.find({"address.city":"pune"})
+
+//to get values from array
+40. db.teachers.find({skills:"PHP"})
+
+//to update with records for multiple students
+41. db.teachers.updateMany({name:{$in:["Jameel","Uzma"]}},{$set:{skills: [ 'React', 'Node', 'PHP' ]}})
+
+// to replace array element with new value
+42. db.teachers.updateOne(
+  { _id: ObjectId('67715a22dcbb3331f84eeb86') },
+  { $set: { "skills.$[elem]": "HTML" } },
+  { arrayFilters: [{ "elem": "Node" }] }
+);
+
+// to replace array element with new multiple value
+db.teachers.updateOne(  { _id: ObjectId('67715a22dcbb3331f84eeb86') }, 
+ { $set: { "skills.$[elem1]": "NODE","skills.$[elem2]":"AWS" } }, 
+ { arrayFilters: [{ "elem1": "HTML" },{"elem2":"CSS"}] });
+
+
+ //In MongoDB, the default limits for collection sizes and documents are as follows:
+
+Collection Size Limit:
+Maximum size of a collection: 16 terabytes (TB)
+Document Size Limit:
+Maximum size of a document: 16 megabytes (MB)
+
+
+//MongoDB provides a free tier for collections and documents with certain limitations. Here's what you need to know:
+
+Free Tier Limits:
+Database size: 512 MB (MongoDB Atlas Free Tier)
+Storage: Limited based on the free tier (512 MB)
+Documents: 16 MB size limit per document
+If your use case exceeds these limits, you may need to upgrade to a paid cluster
+ (e.g., Shared, Dedicated, or Serverless clusters) 
+ to get additional storage and performance features.
+
+
+//to join to tables
+ db.students.aggregate([
+  {
+    $lookup: {
+      from: "classes", // Second collection name
+      localField: "classId", // Field in students
+      foreignField: "_id", // Field in classes
+      as: "classDetails" // Resulting array field
+    }
+  }
+]);
+
+
+ db.employee.aggregate([{$lookup:{from:"roles",localField:"skill_id",foreignField:"_id",as:"employeeDetails"}}])
+[
+  {
+    _id: 1,
+    name: 'Alim',
+    skill_id: 101,
+    employeeDetails: [ { _id: 101, position: 'FullStack Developer' } ]
+  },
+  {
+    _id: 2,
+    name: 'Jameel',
+    skill_id: 102,
+    employeeDetails: [ { _id: 102, position: 'MERN stack Developer' } ]
+  }
+]
+
+
+db.employee.aggregate([{$lookup:{from:'skills',localField:'skills',foreignField:'_id',as:"emp_skills"}}])
+
+[  
+  {
+    _id: 1,
+    name: 'Alim',
+    skills: [ 101, 103 ],
+    emp_skills: [ { _id: 103, skill: 'AWS' }, { _id: 101, skill: 'ReactJS' } ]
+  },
+  {
+    _id: 2,
+    name: 'Jameel',
+    skills: [ 101, 102 ],
+    emp_skills: [ { _id: 102, skill: 'NodeJS' }, { _id: 101, skill: 'ReactJS' } ]
+  }
+]

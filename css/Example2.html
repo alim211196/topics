@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Specificity and Inheritance Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: blue;
+        }
+
+        #main {
+            color: green;
+        }
+
+        .highlight {
+            color: red;
+        }
+
+        p {
+            color: purple;
+        }
+
+        .content p {
+            color: inherit;
+            /* Inherits the color from #main */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <p>This paragraph is inside #main and will be green.</p>
+        <p class="highlight">This paragraph is inside #main and has the class "highlight". It will be red due to higher
+            specificity.</p>
+        <div class="content">
+            <p>This paragraph is inside .content which is inside #main. It will inherit the green color from #main.</p>
+        </div>
+    </div>
+    <p>This paragraph is not inside #main and will be purple.</p>
+</body>
+
+</html>

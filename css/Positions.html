@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning Example</title>
+    <style>
+        .container {
+            position: relative;
+            height: 400px;
+            border: 1px solid black;
+        }
+
+        .static-element,
+        .relative-element,
+        .absolute-element,
+        .fixed-element,
+        .sticky-element {
+            padding: 10px;
+            margin: 5px;
+            background-color: lightgray;
+        }
+
+        .relative-element {
+            position: relative;
+            top: 20px;
+            left: 30px;
+            background-color: lightblue;
+        }
+
+        .absolute-element {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background-color: lightcoral;
+        }
+
+        .fixed-element {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: lightgreen;
+        }
+
+        .sticky-element {
+            position: sticky;
+            top: 0;
+            background-color: lightgoldenrodyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="static-element">This is a static element.</div>
+        <div class="relative-element">This is a relatively positioned element.</div>
+        <div class="absolute-element">This is an absolutely positioned element.</div>
+        <div class="fixed-element">This is a fixed positioned element.</div>
+        <div class="sticky-element">This is a sticky positioned element.</div>
+    </div>
+    <p>Scroll to see the sticky element in action.</p>
+    <p>More content to enable scrolling...</p>
+    <p>More content to enable scrolling...</p>
+    <p>More content to enable scrolling...</p>
+    <p>More content to enable scrolling...</p>
+    <p>More content to enable scrolling...</p>
+</body>
+
+</html>

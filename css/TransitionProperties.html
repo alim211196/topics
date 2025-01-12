@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Properties Example</title>
+    <style>
+        body {
+            width: 99%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transition-property: background-color, transform, border;
+            transition-duration: 0.5s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0.1s;
+        }
+
+        .box:hover {
+            background-color: blue;
+            transform: scale(1.2);
+            border: 1px solid red;
+            /* Scale the box */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

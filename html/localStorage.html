@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage Example</title>
+</head>
+
+<body>
+    <h2>localStorage Example</h2>
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="clearData()">Clear Data</button>
+    <p id="output"></p>
+
+    <script>
+        function saveData() {
+            localStorage.setItem('username', 'JohnDoe');
+            document.getElementById('output').innerText = 'Data saved!';
+        }
+
+        function loadData() {
+            var username = localStorage.getItem('username');
+            document.getElementById('output').innerText = username ? 'Username: ' + username : 'No data found.';
+        }
+
+        function clearData() {
+            localStorage.removeItem('username');
+            document.getElementById('output').innerText = 'Data cleared!';
+        }
+    </script>
+</body>
+
+</html>

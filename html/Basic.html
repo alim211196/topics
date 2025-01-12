@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            var email = document.getElementById('email');
+            if (!email.validity.valid) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                email.setCustomValidity('Invalid email address');
+                event.preventDefault();
+            } else {
+                email.setCustomValidity('');
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <form action="/submit" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        <label for="comments">Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
+
+        <label for="subscribe">Subscribe to newsletter:</label>
+        <input type="checkbox" id="subscribe" name="subscribe"><br>
+        <label for="country">Choose your country:</label>
+        <select id="country" name="country">
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+        </select><br>
+        <input type="range" id="user-volume" name="user-volume" min="0" max="100"><br>
+        <input type="tel" id="user-phone" name="user-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="123-456-7890"><br>
+        <input type="url" id="user-website" name="user-website" required><br>
+        <input type="color" id="fav-color" name="fav-color">
+        <input type="datetime-local" id="meeting-time" name="meeting-time">
+        <input type="month" id="user-birth-month" name="user-birth-month">
+        <input type="time" id="alarm-time" name="alarm-time">
+        <input type="email" id="email" name="email" multiple required><br>
+
+
+        <button type="submit">Submit</button>
+        <button type="button" onclick="alert('Button clicked!')">Click Me</button>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+    <form action="/submit" method="post" id="myForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" style="color:red;"></span><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <img src="https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg" width="auto" height="100px" srcset="https://example.com/image-320.jpg 320w,
+    https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg 480w,
+    https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg 800w" sizes="(max-width: 600px) 480px, 800px"
+        alt="A beautiful scenery of mountains" width="800" height="600" title="Mountain Scenery" loading="lazy"><br>
+    <picture>
+        <source srcset="https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg" type="image/webp"
+            width="auto" height="100px">
+        <source srcset="https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg" type="image/jpeg">
+        <img src="https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg"
+            alt="A beautiful scenery of mountains" title="image">
+    </picture><br>
+    <audio src="audiofile.mp3" controls autoplay loop muted preload="auto">
+        Your browser does not support the audio element.
+    </audio><br>
+    <a href="https://www.example.com" target="_blank" title="Visit Example.com" rel="noopener noreferrer">
+        Visit Example.com
+    </a><br>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+
+
+    <a href="mailto:example@example.com">Send Email</a><br>
+    <a href="index.html">Home page</a><br>
+    <a href="index.html#location">Learn About Our Team</a><br>
+
+    <a href="https://www.w3schools.com" target="_blank" rel="noopener noreferrer"
+        title="Learn web development at W3Schools">Visit W3Schools</a><br>
+
+
+</body>
+
+</html>

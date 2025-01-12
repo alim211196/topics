@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-Classes Example</title>
+    <style>
+        a:hover {
+            color: red;
+            /* Red text on hover */
+        }
+
+        input:focus {
+            border-color: blue;
+            /* Blue border on focus */
+            outline: none;
+            /* Remove default outline */
+        }
+
+
+
+        button:active {
+            background-color: green;
+            /* Green background while active */
+        }
+
+        ul li:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        ul li:nth-child(even) {
+            background-color: #e6e6e6;
+        }
+
+        ul li:nth-of-type(3n) {
+            color: red;
+            /* Red text for every third list item */
+        }
+
+        button:not(.disabled) {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+
+        ul li:first-child {
+            background-color: red;
+        }
+
+        ul li:last-child {
+            background-color: red;
+        }
+
+        .quote::before {
+            content: "“";
+            font-size: 2em;
+            color: grey;
+        }
+
+        .quote::after {
+            content: "”";
+            font-size: 2em;
+            color: grey;
+        }
+
+        p::first-letter {
+            font-size: 3em;
+            color: darkred;
+        }
+
+        p::first-line {
+            font-weight: bold;
+            color: darkblue;
+        }
+
+        :root {
+            --main-bg-color: #f1f1f1;
+            --main-font-size: 20px;
+            --main-font-color: black;
+            --main-color: coral;
+        }
+
+        body {
+            background-color: var(--main-bg-color, #ffffff);
+            font-size: var(--main-font-size);
+            color: var(--main-font-color);
+
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: var(--main-color);
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    <a href="#">Hover over me</a>
+    <br>
+    <input type="text" placeholder="Focus on me">
+    <br>
+    <button>Click me</button>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+    <blockquote class="quote">
+        <p>The only limit to our realization of tomorrow is our doubts of today.</p>
+    </blockquote>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac turpis metus.</p>
+    <div class="box"></div>
+
+    <button onclick="changeColor()">Change Color</button>
+    <script>
+        function changeColor() {
+            document.documentElement.style.setProperty('--main-color', 'lightblue');
+        }
+    </script>
+
+</body>
+
+</html>

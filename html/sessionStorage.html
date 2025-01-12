@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionStorage Example</title>
+</head>
+
+<body>
+    <h2>sessionStorage Example</h2>
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="clearData()">Clear Data</button>
+    <p id="output"></p>
+
+    <script>
+        function saveData() {
+            sessionStorage.setItem('sessionName', 'JaneDoe');
+            document.getElementById('output').innerText = 'Data saved!';
+        }
+
+        function loadData() {
+            var sessionName = sessionStorage.getItem('sessionName');
+            document.getElementById('output').innerText = sessionName ? 'Session Name: ' + sessionName : 'No data found.';
+        }
+
+        function clearData() {
+            sessionStorage.removeItem('sessionName');
+            document.getElementById('output').innerText = 'Data cleared!';
+        }
+    </script>
+</body>
+
+</html>

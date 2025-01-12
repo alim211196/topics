@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Properties Example</title>
+    <style>
+        .container {
+            background-color: #f0f0f0;
+            /* Light gray background color */
+            background-image: url('https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg');
+            /* Background image */
+            background-size: cover;
+            /* Scales image to cover the entire container */
+            background-position: center;
+            /* Centers the image */
+            background-repeat: no-repeat;
+            /* Prevents repeating the image */
+            height: 300px;
+            /* Sets height for demonstration */
+        }
+
+        .custom {
+            background-color: rgba(0, 102, 204, 0.5);
+            /* Semi-transparent blue */
+            background-image: url('https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg');
+            /* Background image */
+            background-size: contain;
+            /* Scales image to fit within the container */
+            background-position: top right;
+            /* Positions the image at the top-right corner */
+            background-repeat: repeat-x;
+            /* Repeats the image horizontally */
+            height: 200px;
+            /* Sets height for demonstration */
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Background Properties Example</h1>
+    </div>
+    <div class="custom">
+        <p>Custom background styling with different properties.</p>
+    </div>
+</body>
+
+</html>

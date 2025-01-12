@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Example</title>
+    <style>
+        /* Element Selector */
+        h1 {
+            color: navy;
+        }
+
+        /* Class Selector */
+        .text-muted {
+            color: gray;
+        }
+
+        /* ID Selector */
+        #main-content {
+            padding: 20px;
+        }
+
+        /* Class and Element Selector Combination */
+        p.highlighted {
+            background-color: yellow;
+        }
+
+        /* ID and Element Selector Combination */
+        #sidebar ul {
+            list-style-type: none;
+        }
+
+        /* Attribute Selector */
+        input[type="password"] {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to CSS Selectors</h1>
+    <p class="text-muted">This is a paragraph with muted text.</p>
+    <div id="main-content">
+        <p class="highlighted">This text is highlighted.</p>
+    </div>
+    <div id="sidebar">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+    </div>
+    <input type="password" placeholder="Enter your password">
+</body>
+
+</html>

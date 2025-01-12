@@ -1,0 +1,33 @@
+//1.get all table data
+SELECT * FROM tablename
+
+//2.get filtered data
+SELECT * FROM tablename WHERE name='Alim'
+
+//3.insert data
+INSERT INTO tablename (col1,col2)VALUES('value1','value2')
+
+//4.update data
+UPDATE tablename SET col1='value new' WHERE condition;
+
+//5.delete data
+DELETE FROM tablename WHERE condition
+
+//6.sort data
+SELECT * FROM tablename ORDER BY col1 ASC;
+
+//7.aggregate data
+SELECT COUNT(*) FROM tablename
+
+//8.group data
+SELECT COUNT(*) FROM tablename GROUP BY col1
+
+//9.Join tables
+SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.foreign_id;
+
+//10.limit results 
+SELECT * FROM tablename LIMIT 10;
+
+//To find the second largest element from an array in MySQL, 
+//you can use a query with a subquery. Here's a question for you:
+SELECT DISTINCT salary FROM employees ORDER BY salary DESC LIMIT 1 OFFSET 1

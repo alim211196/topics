@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Units</title>
+    <style>
+        body {
+            font-size: 16px;
+            /* Base font size */
+        }
+
+        .container {
+            width: 80vw;
+            /* 80% of viewport width */
+            height: 50vh;
+            /* 50% of viewport height */
+            margin: 0 auto;
+            /* Center the container */
+            background-color: lightgray;
+        }
+
+        .text {
+            font-size: 2rem;
+            /* 2 times the root font size */
+            padding: 2em;
+            /* Padding relative to the element's font size */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="text">This is some responsive text inside a container.</p>
+    </div>
+</body>
+
+</html>

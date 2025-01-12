@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<!-- <script src="app.js" /> -->
+<script>
+    var watchId;
+
+    function startWatching() {
+        if (navigator.geolocation) {
+            watchId = navigator.geolocation.watchPosition(showPosition, showError);
+        } else {
+            document.getElementById('location').innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function stopWatching() {
+        if (navigator.geolocation) {
+            navigator.geolocation.clearWatch(watchId);
+            document.getElementById('location').innerHTML = "Stopped watching position.";
+        }
+    }
+
+    function showPosition(position) {
+        document.getElementById('location').innerHTML =
+            "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                document.getElementById('location').innerHTML = "User denied the request for Geolocation.";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                document.getElementById('location').innerHTML = "Location information is unavailable.";
+                break;
+            case error.TIMEOUT:
+                document.getElementById('location').innerHTML = "The request to get user location timed out.";
+                break;
+            case error.UNKNOWN_ERROR:
+                document.getElementById('location').innerHTML = "An unknown error occurred.";
+                break;
+        }
+    }
+</script>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        transition-property: background-color, transform;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+    }
+
+    .box:hover {
+        background-color: blue;
+        transform: scale(1.2);
+        /* Scale the box */
+    }
+</style>
+
+<!-- <style>
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        50% {
+            transform: translateY(-100px);
+            opacity: 0.5;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        /* Repeat forever */
+    }
+</style> -->
+<style>
+    a:hover {
+        color: red;
+        /* Red text on hover */
+    }
+
+    input:focus {
+        border-color: blue;
+        /* Blue border on focus */
+        outline: none;
+        /* Remove default outline */
+    }
+
+    button:active {
+        background-color: green;
+        /* Green background while active */
+    }
+</style>
+<style>
+    ul li:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    ul li:nth-child(even) {
+        background-color: #e6e6e6;
+    }
+
+    ul li:nth-of-type(3n) {
+        color: red;
+        /* Red text for every third list item */
+    }
+
+    h2::before {
+        content: "★ ";
+        /* Adds a star before each h2 element */
+        color: gold;
+    }
+
+    p::after {
+        content: " (Read more...)";
+        /* Appends text to each paragraph */
+        color: blue;
+        font-style: italic;
+    }
+
+    p::first-letter {
+        font-size: 2em;
+        color: darkred;
+        font-weight: bold;
+    }
+</style>
+<style>
+    :root {
+        --main-color: coral;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: var(--main-color);
+    }
+</style>
+
+
+<body>
+
+    <div class="container mx-auto p-4">
+        <div class="flex space-x-4">
+            <div class="w-1/3 bg-blue-500 text-white p-4">Box 1</div>
+            <div class="w-1/3 bg-green-500 text-white p-4">Box 2</div>
+            <div class="w-1/3 bg-red-500 text-white p-4">Box 3</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">Column 1</div>
+            <div class="col-md-4">Column 2</div>
+            <div class="col-md-4">Column 3</div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary">Primary Button</button>
+    <div class="box"></div>
+    <button onclick="changeColor()">Change Color</button>
+    <script>
+        function changeColor() {
+            document.documentElement.style.setProperty('--main-color', 'lightblue');
+        }
+    </script>
+
+    <h2>Important Heading</h2>
+    <p>This is a paragraph</p>
+    <p>Lorem ipsum dolor sit amet...</p>
+
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+
+    <a href="#">Hover over me</a>
+    <br>
+    <input type="text" placeholder="Focus on me">
+    <br>
+    <button>Click me</button>
+
+    <div class="box"></div>
+
+    <h2>Watch User Location</h2>
+    <button onclick="startWatching()">Start Watching</button>
+    <button onclick="stopWatching()">Stop Watching</button>
+    <p id="location">Fetching location...</p>
+
+    <form action="/submit" method="post">
+        <label for="user-email">Email:</label>
+        <input type="email" id="user-email" name="user-email" required />
+        <span id="emailError" style="color:red;"></span><br>
+        <input type="submit" value="Submit" />
+    </form>
+    <form action="/submit" method="post">
+        <label for="user-dob">Date of Birth:</label>
+        <input type="date" id="user-dob" name="user-dob">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="user-age">Age:</label>
+        <input type="number" id="user-age" name="user-age" min="1" max="100" step="1">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="user-volume">Volume:</label>
+        <input type="range" id="user-volume" name="user-volume" min="0" max="100">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="user-phone">Phone Number:</label>
+        <input type="tel" id="user-phone" name="user-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="123-456-7890">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="user-website">Website:</label>
+        <input type="url" id="user-website" name="user-website" required>
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="fav-color">Favorite Color:</label>
+        <input type="color" id="fav-color" name="fav-color">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="meeting-time">Meeting Time:</label>
+        <input type="datetime-local" id="meeting-time" name="meeting-time">
+        <input type="submit" value="Submit">
+    </form>
+
+    <form action="/submit" method="post">
+        <label for="user-birth-month">Birth Month:</label>
+        <input type="month" id="user-birth-month" name="user-birth-month">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="user-birth-week">Birth Week:</label>
+        <input type="week" id="user-birth-week" name="user-birth-week">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit" method="post">
+        <label for="alarm-time">Alarm Time:</label>
+        <input type="time" id="alarm-time" name="alarm-time">
+        <input type="submit" value="Submit">
+    </form>
+    <img src="https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg" width="auto" height="40px"
+        alt="Example Image" title="This is an example image" loading="lazy">
+    <audio src="audiofile.mp3" controls>
+        Your browser does not support the audio element.
+    </audio>
+    <video src="videofile.mp4" controls autoplay loop muted preload="auto" width="140" height="60"
+        poster="https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg">
+        Your browser does not support the video element.
+    </video>
+    <h2>Glossary</h2>
+    <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language. The standard language for creating web pages.</dd>
+
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets. A language used to style the appearance of web pages.</dd>
+
+        <dt>JavaScript</dt>
+        <dd>A programming language used to create dynamic and interactive effects on web pages.</dd>
+    </dl>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+                <th>Header 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2" colspan="2">Merged cell</td>
+                <td>Data 1</td>
+                <td>Data 2</td>
+            </tr>
+            <tr>
+                <td>Data 3</td>
+                <td>Data 4</td>
+            </tr>
+            <tr>
+                <td>Data 5</td>
+                <td>Data 6</td>
+                <td>Data 7</td>
+                <td>Data 8</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
