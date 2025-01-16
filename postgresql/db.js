@@ -10,9 +10,9 @@ const db = pgp({
 });
 
 db.connect()
-  .then((obj) => {
+  .then((con) => {
     console.log("Connected to PostgreSQL");
-    obj.done(); // release the connection
+    con.done(); // release the connection
   })
   .catch((error) => {
     console.error("Error connecting to PostgreSQL:", error.message);

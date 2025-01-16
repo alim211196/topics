@@ -1,0 +1,137 @@
+
+
+TypeScript has static typing
+TypeScript uses compile time type checking,
+it check type is correct or not before running code not while running code.
+TypeScript is transpiled into JavaScript using a compiler.
+
+TypeScript compiler install
+npm i typescript --save-dev
+
+to generate tsconfig.json file we need to use npx tsc --init
+
+//TypeScript primitive data types
+number,boolean and string
+//less common primitive types
+bigInt,symbol
+
+//there are to ways typescript assign type
+1. Explicit exp: let name:string="Alim"; //Explicit type assignment are easier to read and more intentional
+2.Implicit exp: let name="Alim"; //Implicit type assignment are shorter, 
+faster to type, and often used when developing and testing.
+
+
+Type: any
+any is a type that disables type checking and effectively allows all types to be used.
+
+Type: unknown
+unknown is a similar, but safer alternative to any.
+
+
+Type: never
+never effectively throws an error whenever it is defined.
+
+Type: undefined & null
+undefined and null are types that refer to the JavaScript primitives undefined and null respectively.
+
+Readonly
+The readonly keyword can prevent arrays from being changed.
+
+Type Inference
+TypeScript can infer the type of an array if it has values.
+
+Typed Arrays
+A tuple is a typed array with a pre-defined length and types for each index.
+Tuples are great because they allow each element in the array to be a known type of value.
+
+Readonly Tuple
+A good practice is to make your tuple readonly.
+
+Tuples only have strongly defined types for the initial values:
+
+Named Tuples
+Named tuples allow us to provide context for our values at each index.
+
+Destructuring Tuples
+Since tuples are arrays we can also destructure them.
+
+
+TypeScript has a specific syntax for typing objects.
+
+Optional properties are properties that don't have to be defined in the object definition.
+
+Index signatures can be used for objects without a defined list of properties.
+
+An enum is a special "class" that represents a group of constants (unchangeable variables).
+
+TypeScript allows types to be defined separately from the variables that use them.
+
+Aliases and Interfaces allows types to be easily shared between different variables/objects.
+
+Union types are used when a value can be more than a single type.
+
+The type void can be used to indicate a function doesn't return any value.
+
+Function parameters are typed with a similar syntax as variable declarations.
+Optional Parameters   function add(a: number, b: number, c?: number) 
+Default Parameters   function pow(value: number, exponent: number = 10)
+Named Parameters   function divide({ dividend, divisor }: { dividend: number, divisor: number }) 
+Rest Parameters      function add(a: number, b: number, ...rest: number[])
+
+
+Casting is the process of overriding a type.
+
+TypeScript Classes
+TypeScript adds types and visibility modifiers to JavaScript classes.
+Members: Types
+The members of a class (properties & methods) are typed using type annotations, similar to variables.
+
+Members: Visibility
+Class members also be given special modifiers which affect visibility.
+
+There are three main visibility modifiers in TypeScript.
+
+public - (default) allows access to the class member from anywhere
+private - only allows access to the class member from within the class
+protected - allows access to the class member from itself and any classes that inherit it,
+ which is covered in the inheritance 
+
+ The this keyword in a class usually refers to the instance of the class.
+
+
+TypeScript Basic Generics
+
+Generics allow creating 'type variables' which can be used to create classes,
+functions & type aliases that don't need to explicitly define the types that they use.
+
+Generics makes it easier to write reusable code.
+Generics can be used to create generalized classes, like Map.
+
+TypeScript Utility Types
+
+1. Partial changes all the properties in an object to be optional. 
+let pointPart: Partial<Point> = {}; 
+
+2. Required changes all the properties in an object to be required. 
+let myCar: Required<Car> = {};
+
+3. Record is a shortcut to defining an object type with a specific key type and value type.
+const nameAgeMap: Record<string, number> = {}
+
+4. Omit removes keys from an object type.
+const bob: Omit<Person, 'age' | 'location'> = {}
+
+5. Pick removes all but the specified keys from an object type.
+const bob: Pick<Person, 'name'> = {}
+
+6. Exclude removes types from a union.
+const value: Exclude<Primitive, string> = true; 
+
+7. ReturnType extracts the return type of a function type.
+const point: ReturnType<PointGenerator> = {}
+
+8. Parameters extracts the parameter types of a function type as an array.
+const point: Parameters<PointPrinter>[0] = {}
+
+
+keyof is a keyword in TypeScript which is used to extract the key type from an object type.

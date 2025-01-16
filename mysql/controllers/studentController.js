@@ -1,8 +1,10 @@
 const studentModel = require("../models/studentModel");
 const redisClient = require("../utils/redisClient");
-
+const pool = require("../db");
 const getStudents = async (req, res) => {
+  let connection;
   try {
+    connection = await pool.getConnection();
     const cachedStudents = await redisClient.get("sql-students");
     if (cachedStudents) {
       console.log("Fetched students from cache");
@@ -14,6 +16,10 @@ const getStudents = async (req, res) => {
     res.status(200).json(students);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  } finally {
+    if (connection) {
+      connection.release();
+    }
   }
 };
 
